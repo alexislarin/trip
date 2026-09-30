@@ -19,6 +19,13 @@ const toggleVariants = cva(
         lg: "h-9 min-w-9 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
       },
     },
+    compoundVariants: [
+      {
+        variant: "image",
+        size: "lg",
+        className: "text-base leading-6",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
@@ -26,12 +33,25 @@ const toggleVariants = cva(
   }
 )
 
+type ToggleVariants = VariantProps<typeof toggleVariants>
+type ToggleVariant = NonNullable<ToggleVariants["variant"]>
+type ToggleSize = NonNullable<ToggleVariants["size"]>
+type ToggleStyleProps =
+  | {
+      variant?: Exclude<ToggleVariant, "image">
+      size?: ToggleSize
+    }
+  | {
+      variant: "image"
+      size: "lg"
+    }
+
 function Toggle({
   className,
   variant = "default",
   size = "default",
   ...props
-}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
+}: TogglePrimitive.Props & ToggleStyleProps) {
   return (
     <TogglePrimitive
       data-slot="toggle"
@@ -41,4 +61,4 @@ function Toggle({
   )
 }
 
-export { Toggle, toggleVariants }
+export { Toggle, toggleVariants, type ToggleStyleProps }

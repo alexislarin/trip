@@ -455,7 +455,7 @@ export function App() {
                     value={selectedCriteria}
                     onValueChange={setSelectedCriteria}
                     variant="image"
-                    size="sm"
+                    size="lg"
                     className="place-criteria-toggle flex h-full w-full flex-wrap items-stretch gap-1"
                   >
                     {placesDataset.criteria.map((criterion) => (
@@ -484,7 +484,7 @@ export function App() {
                         setSelectedMonth(value[0] as Month | undefined)
                       }
                       variant="image"
-                      size="sm"
+                      size="lg"
                       className="grid h-full w-full grid-cols-3 gap-1"
                     >
                       {row.map((month) => (
