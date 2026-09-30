@@ -7,7 +7,9 @@ import { defineConfig } from "vite"
 export default defineConfig({
   // `configure-pages` supplies the right value for each GitHub Pages site.
   // Local development and custom domains default to the root path.
-  base: process.env.VITE_BASE_PATH ?? "/",
+  // Vite substitutes %BASE_URL% verbatim in index.html, so retain the trailing
+  // slash even when configure-pages supplies `/trip`.
+  base: (process.env.VITE_BASE_PATH ?? "/").replace(/\/?$/, "/"),
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
