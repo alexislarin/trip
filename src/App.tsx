@@ -410,7 +410,7 @@ export function App() {
           type="button"
           variant="link"
           size="lg"
-          className="place-filter-topbar hidden h-auto w-full shrink-0 border-0 bg-sidebar py-3 text-sidebar-foreground"
+          className="place-filter-topbar hidden h-auto w-full shrink-0 border-0 bg-sidebar py-5 text-sidebar-foreground"
           aria-expanded={mobileFiltersOpen}
           aria-controls="place-filter-panel"
           onClick={() => setMobileFiltersOpen((open) => !open)}
