@@ -104,19 +104,24 @@ on a grid wide enough for two 328px columns, the selected card spans two columns
 and rows. Motion animates the selected card and the cards reflowing around it.
 Places without any criterion availability are omitted from the results.
 The expanded card uses the Figma Display style for its title. Its original-ratio
-photos start at the top: the central photo occupies half the card width, while
-up to two side photos occupy a third each. Hovering a side photo brings it above
-the others and expands it to half width. A 4px white border sits inside the
-expanded card. The bottom content follows the Figma
+photos start at the top in their source order from left to right: the first
+occupies the left third, the second occupies the central half, and the third
+occupies the right third. The first photo sits above the other layers. A 4px
+white border sits inside the expanded card. A single photo uses the central
+half. The bottom content follows the Figma
 auto layout: title and symbols in the left half, aligned to the bottom with a
 16px gap; matching criterion and availability Badge columns in the right half,
 aligned to the bottom right. Existing semantic colors style the badges. A card
 in a right-hand column keeps its row and right edge while expanding leftward.
 When switching cards, the new card expands from its current CSS Grid cell, even
 if dense placement has moved it away from its original list position.
-The other cards fill the remaining cells. Below
-the two-column grid breakpoint, the expanded card takes one grid cell at twice
-the collapsed card height, and its bottom content stacks vertically. Clicking
+The scroll container does not apply browser scroll anchoring while an expanded
+card above the viewport collapses, so selecting a visible card does not scroll
+the results upward.
+The other cards fill the remaining cells. At the one-column grid breakpoint,
+the expanded card lays out photos, an LG gap, and its content in normal flow,
+and hugs that composition at its natural height. When availability moves below
+the title, its Badge columns stay aligned to the card's right edge. Clicking
 the selected card collapses it.
 
 At 640px and below, a full-width large Link Button on the `sidebar` surface

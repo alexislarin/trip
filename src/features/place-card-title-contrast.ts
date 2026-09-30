@@ -3,7 +3,7 @@ import { useLayoutEffect, type RefObject } from "react"
 // Place-card behavior: keep the image analysis and its tuning local to this feature.
 // The title starts white in .place-card-title until its photos can be sampled.
 // 0 always chooses white; increasing this value makes dark titles more common.
-const PLACE_CARD_DARK_TEXT_WEIGHT = 0.5
+const PLACE_CARD_DARK_TEXT_WEIGHT = 0.7
 const MAX_CONTRAST_SCORE = 7
 const MAX_SAMPLE_WIDTH = 256
 const MAX_SAMPLE_HEIGHT = 128
