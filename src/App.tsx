@@ -9,6 +9,7 @@ import { motion } from "motion/react"
 import { ChevronDown, ChevronUp } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Empty,
@@ -101,6 +102,25 @@ function currentGridCell(grid: HTMLElement, card: HTMLElement) {
       Number.parseFloat(style.rowGap) || 0
     ),
   }
+}
+
+function centerExpandedCardOnMobile(card: HTMLButtonElement) {
+  if (!window.matchMedia("(max-width: 640px)").matches) return
+
+  const centerCard = () => {
+    card.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    })
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      centerCard()
+    })
+  })
+  window.setTimeout(centerCard, 300)
 }
 
 type SelectedCard = {
@@ -386,16 +406,18 @@ export function App() {
       style={{ "--sidebar-width": "min(20vw, 25rem)" } as CSSProperties}
     >
       <div className="place-filter-shell">
-        <button
+        <Button
           type="button"
-          className="place-filter-topbar hidden w-full shrink-0 items-center gap-2 bg-sidebar p-3 text-left text-sm text-sidebar-foreground focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring"
+          variant="link"
+          size="lg"
+          className="place-filter-topbar hidden h-auto w-full shrink-0 border-0 bg-sidebar py-3 text-sidebar-foreground"
           aria-expanded={mobileFiltersOpen}
           aria-controls="place-filter-panel"
           onClick={() => setMobileFiltersOpen((open) => !open)}
         >
           <span
             ref={summaryLabelRef}
-            className="relative min-w-0 flex-1 overflow-hidden whitespace-nowrap"
+            className="relative min-w-0 max-w-full overflow-hidden text-ellipsis whitespace-nowrap"
           >
             {compactFilterSummary ? shortFilterSummary : fullFilterSummary}
             <span
@@ -411,7 +433,7 @@ export function App() {
           ) : (
             <ChevronDown aria-hidden="true" className="size-4 shrink-0" />
           )}
-        </button>
+        </Button>
         <Sidebar
           id="place-filter-panel"
           collapsible="none"
@@ -527,6 +549,9 @@ export function App() {
                     const cell = gridRef.current
                       ? currentGridCell(gridRef.current, card)
                       : gridAnchor(index, gridColumns)
+                    const willExpand = selectedCard?.id !== place.id
+                    if (willExpand) centerExpandedCardOnMobile(card)
+
                     setSelectedCard((current) => {
                       if (current?.id === place.id) return null
 

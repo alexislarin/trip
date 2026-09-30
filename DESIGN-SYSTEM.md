@@ -90,6 +90,7 @@ utilities in the shadcn baseline.
 | --------- | ------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Toggle    | Supports photographic filter surfaces without a border. | `image` variant      | The photo uses one background layer blended with a tint, avoiding bright edge pixels from separately composited layers. Image opacity is 25% at rest, 50% on hover, and 100% while selected; sidebar filters supply a black tint color and white text. |
 | Badge     | Uses the Figma `caption` Text Style.                    | —                    | Hanken Grotesk Regular, 13px/20.5px, 1px tracking, uppercase; height follows the text and padding. Applies to all variants, including place-card tags.                                                                                                 |
+| Button    | Large buttons use the Figma `paragraph large/medium` Text Style. | `size="lg"` | Hanken Grotesk Medium, 18px/27px. This applies to every Button variant and state. |
 
 ## New reusable patterns
 
@@ -118,13 +119,14 @@ the two-column grid breakpoint, the expanded card takes one grid cell at twice
 the collapsed card height, and its bottom content stacks vertically. Clicking
 the selected card collapses it.
 
-At 640px and below, a full-width top bar shows selected criteria and month,
-or “Select interests...” when no filter is selected. It shortens a summary to
+At 640px and below, a full-width large Link Button on the `sidebar` surface
+centers its selected criteria and month with its chevron, or “Select interests...” when no filter is selected.
+It shortens a summary to
 the criterion count when the full text does not fit. The bar toggles the
 existing filter panel over the cards, directly beneath it, at 80% of viewport
 height. A translucent `primary` scrim covers the cards and closes the panel
 when tapped. A chevron indicates the panel state. Mobile typography and
-rem-based spacing scale continuously from 100% at 640px to 70% at 320px.
+rem-based spacing scale continuously from 100% at 640px to 80% at 320px.
 
 On wider screens, the sidebar occupies 20% of the viewport up to 400px. The
 results grid keeps cards at least 400px wide; narrow screens switch to the
