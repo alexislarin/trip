@@ -238,6 +238,11 @@
   min-width: 0;
   min-height: 0;
   object-fit: cover;
+  transition: filter 150ms ease;
+}
+
+.place-card:not([data-expanded="true"]):hover .place-card-photos img {
+  filter: brightness(1.04);
 }
 
 .place-card[data-expanded="true"] .place-card-photos {
