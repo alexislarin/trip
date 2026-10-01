@@ -23,7 +23,7 @@ const toggleVariants = cva(
       {
         variant: "image",
         size: "lg",
-        className: "text-base leading-6",
+        className: "text-paragraph-small",
       },
     ],
     defaultVariants: {
