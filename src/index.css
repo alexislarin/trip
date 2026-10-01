@@ -504,6 +504,21 @@
   max-height: var(--sidebar-filter-row-height);
 }
 
+.place-filter-credit [data-slot="item"],
+.place-filter-credit [data-slot="item-description"] {
+  color: var(--muted-foreground);
+}
+
+.place-filter-credit a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.place-filter-credit a:hover {
+  background: transparent;
+  color: var(--muted-foreground);
+}
+
 @media (min-width: 640px) and (max-width: 750px) {
   .place-filter-panel [data-slot="toggle-group-item"] {
     max-width: 100%;

@@ -20,11 +20,19 @@ import {
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/components/ui/item"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { MONTHS, placesDataset, type Month, type Place } from "@/data/places"
 import { placeSymbolImages } from "@/data/place-symbol-images.generated"
@@ -440,7 +448,7 @@ export function App() {
           data-mobile-open={mobileFiltersOpen}
           className="place-filter-panel h-svh shrink-0"
         >
-          <SidebarContent ref={sidebarContentRef} className="p-3 md:p-4">
+          <SidebarContent ref={sidebarContentRef} className="p-3 pb-0 md:p-4 md:pb-0">
             <div
               ref={filterLayoutRef}
               className="place-filter-layout flex h-full min-h-0 flex-col gap-8"
@@ -503,6 +511,24 @@ export function App() {
               </SidebarGroup>
             </div>
           </SidebarContent>
+          <SidebarFooter className="place-filter-credit p-3 pt-4 md:p-4 md:pt-8">
+            <Item>
+              <ItemMedia variant="image">
+                <img
+                  src={`${import.meta.env.BASE_URL}home-avatar.webp`}
+                  alt=""
+                />
+              </ItemMedia>
+              <ItemContent>
+                <ItemTitle>
+                  Made by <a href="https://alexislarin.com/">Alexis</a>
+                </ItemTitle>
+                <ItemDescription>
+                  Photos provided by <a href="https://www.pexels.com/">Pexels</a>
+                </ItemDescription>
+              </ItemContent>
+            </Item>
+          </SidebarFooter>
         </Sidebar>
       </div>
       {mobileFiltersOpen && (
